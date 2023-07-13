@@ -7,7 +7,7 @@ st.set_page_config(
 layout = "wide"
 
 )
-tab1, tab2, tab3 = st.tabs(["行业", "概念","期货"])
+tab1, tab2, tab3 = st.tabs(["行业", "概念","公司"])
 @st.cache_data
 def get_level(level=[1,2]):
     dic={}
