@@ -22,8 +22,6 @@ def get_level(level=[1,2]):
     return dic
 @st.cache_data
 def get_concept():
-
-
     url = f'http://127.0.0.1:5000/concept'
     jdata = requests.get(url).json()
 
