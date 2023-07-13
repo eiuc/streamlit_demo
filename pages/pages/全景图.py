@@ -30,6 +30,16 @@ def get_concept():
     df = df.dropna()
 
     return df
+@st.cache_data
+def get_company():
+    url = f'http://127.0.0.1:5000/company'
+    jdata = requests.get(url).json()
+
+    df = pd.read_json(jdata, orient='records')
+
+    df = df.dropna()
+
+    return df
 with tab1:
    st.header("行业全景")
    dic = get_level()
@@ -82,5 +92,22 @@ with tab2:
        },
        hide_index=True,
    )
+with tab3:
+   st.header("公司全景")
+   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+   df = get_concept()
+   styled_df = df.style.background_gradient(cmap='coolwarm')
+   st.write('概念')
+   st.data_editor(
+       styled_df,
+       column_config={
+           "line_chart": st.column_config.LineChartColumn(
+               "近一年走势",
+               width="medium",
+               help="The sales volume in the last 6 months",
 
+           ),
+       },
+       hide_index=True,
+   )
 
