@@ -95,7 +95,7 @@ with tab2:
 with tab3:
    st.header("公司全景")
    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-   df = get_concept()
+   df = get_company()
    styled_df = df.style.background_gradient(cmap='coolwarm')
    st.write('概念')
    st.data_editor(
