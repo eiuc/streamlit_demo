@@ -76,7 +76,7 @@ with tab1:
 
 with tab2:
    st.header("概念全景")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+   # st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
    df = get_concept()
    styled_df = df.style.background_gradient(cmap='coolwarm')
    st.write('概念')
@@ -92,9 +92,19 @@ with tab2:
        },
        hide_index=True,
    )
+   # 创建一个具有固定高度的容器
+   page_height = 600
+   html = f"""
+       <div style="height:{page_height}px; overflow:auto;">
+           <p>概念</p>
+           <iframe src="http://quote.eastmoney.com/center/boardlist.html#concept_board" width="100%" height="{page_height}px"></iframe>
+       </div>
+       """
+   # 在 Streamlit 应用中显示容器和嵌入的网页
+   st.markdown(html, unsafe_allow_html=True)
 with tab3:
    st.header("公司全景")
-   st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+   # st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
    df = get_company()
    styled_df = df.style.background_gradient(cmap='coolwarm')
    st.write('概念')
@@ -110,4 +120,5 @@ with tab3:
        },
        hide_index=True,
    )
+
 
